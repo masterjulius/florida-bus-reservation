@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0703A154-7E9D-4822-BE9E-E7A6417D4284}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Florida_Bus_Reservation</RootNamespace>
+    <AssemblyName>Florida-Bus-Reservation</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BUS\FRM_MANAGE_BUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FRM_MANAGE_BUS.Designer.cs">
+      <DependentUpon>FRM_MANAGE_BUS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\FRM_MANAGE_CLASS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FRM_MANAGE_CLASS.Designer.cs">
+      <DependentUpon>FRM_MANAGE_CLASS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\FRM_VIEW_ALL_BUS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FRM_VIEW_ALL_BUS.Designer.cs">
+      <DependentUpon>FRM_VIEW_ALL_BUS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BUS\FRM_VIEW_ALL_BUS_CLASS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BUS\FRM_VIEW_ALL_BUS_CLASS.Designer.cs">
+      <DependentUpon>FRM_VIEW_ALL_BUS_CLASS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Connection.cs" />
+    <Compile Include="Classes\Datatypes.cs" />
+    <Compile Include="Classes\Forms.cs" />
+    <Compile Include="Classes\Globals.cs" />
+    <Compile Include="FRM_MAIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_MAIN.Designer.cs">
+      <DependentUpon>FRM_MAIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_SIGN_IN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_SIGN_IN.Designer.cs">
+      <DependentUpon>FRM_SIGN_IN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RESERVATION\FRM_ADD_EDIT_CLIENT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_ADD_EDIT_CLIENT.Designer.cs">
+      <DependentUpon>FRM_ADD_EDIT_CLIENT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_CLIENTS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_CLIENTS.Designer.cs">
+      <DependentUpon>FRM_CLIENTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_CURRENT_SCHEDULES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_CURRENT_SCHEDULES.Designer.cs">
+      <DependentUpon>FRM_CURRENT_SCHEDULES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_MANAGE_RESERVATION.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_MANAGE_RESERVATION.Designer.cs">
+      <DependentUpon>FRM_MANAGE_RESERVATION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCHEDULES\FRM_ADD_EDIT_SCHEDULES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCHEDULES\FRM_ADD_EDIT_SCHEDULES.Designer.cs">
+      <DependentUpon>FRM_ADD_EDIT_SCHEDULES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SCHEDULES\FRM_BUS_SCHEDULES.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SCHEDULES\FRM_BUS_SCHEDULES.Designer.cs">
+      <DependentUpon>FRM_BUS_SCHEDULES.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BUS\FRM_MANAGE_BUS.resx">
+      <DependentUpon>FRM_MANAGE_BUS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FRM_MANAGE_CLASS.resx">
+      <DependentUpon>FRM_MANAGE_CLASS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FRM_VIEW_ALL_BUS.resx">
+      <DependentUpon>FRM_VIEW_ALL_BUS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BUS\FRM_VIEW_ALL_BUS_CLASS.resx">
+      <DependentUpon>FRM_VIEW_ALL_BUS_CLASS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_MAIN.resx">
+      <DependentUpon>FRM_MAIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_SIGN_IN.resx">
+      <DependentUpon>FRM_SIGN_IN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="RESERVATION\FRM_ADD_EDIT_CLIENT.resx">
+      <DependentUpon>FRM_ADD_EDIT_CLIENT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESERVATION\FRM_CLIENTS.resx">
+      <DependentUpon>FRM_CLIENTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESERVATION\FRM_CURRENT_SCHEDULES.resx">
+      <DependentUpon>FRM_CURRENT_SCHEDULES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESERVATION\FRM_MANAGE_RESERVATION.resx">
+      <DependentUpon>FRM_MANAGE_RESERVATION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCHEDULES\FRM_ADD_EDIT_SCHEDULES.resx">
+      <DependentUpon>FRM_ADD_EDIT_SCHEDULES.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCHEDULES\FRM_BUS_SCHEDULES.resx">
+      <DependentUpon>FRM_BUS_SCHEDULES.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-System Task-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Bus-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Ticket Purchase-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Schedule-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Plus Math-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Delete-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Edit-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Save-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Search-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Trash Can-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Cancel 2-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Checked-40.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
