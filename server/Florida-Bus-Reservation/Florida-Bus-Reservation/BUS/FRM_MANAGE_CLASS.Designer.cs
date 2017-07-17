@@ -52,6 +52,8 @@
             this.rdioNO = new System.Windows.Forms.RadioButton();
             this.rdioYES = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.txt_seat_price = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.toolStrip_action_menus.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -173,6 +175,8 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.txt_seat_price);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txt_remarks);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txt_number_of_seats);
@@ -184,23 +188,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1184, 663);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txt_remarks
             // 
-            this.txt_remarks.Location = new System.Drawing.Point(267, 292);
+            this.txt_remarks.Location = new System.Drawing.Point(267, 399);
             this.txt_remarks.Name = "txt_remarks";
             this.txt_remarks.Size = new System.Drawing.Size(341, 205);
-            this.txt_remarks.TabIndex = 7;
+            this.txt_remarks.TabIndex = 10;
             this.txt_remarks.Text = "";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 285);
+            this.label4.Location = new System.Drawing.Point(25, 392);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(222, 28);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 9;
             this.label4.Text = "ADDITIONAL REMARKS:";
             // 
             // txt_number_of_seats
@@ -245,7 +250,7 @@
             this.panel2.Controls.Add(this.rdioYES);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(16, 178);
+            this.panel2.Location = new System.Drawing.Point(16, 285);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(609, 66);
             this.panel2.TabIndex = 5;
@@ -256,7 +261,7 @@
             this.rdioNO.Location = new System.Drawing.Point(335, 20);
             this.rdioNO.Name = "rdioNO";
             this.rdioNO.Size = new System.Drawing.Size(63, 32);
-            this.rdioNO.TabIndex = 6;
+            this.rdioNO.TabIndex = 8;
             this.rdioNO.Text = "NO";
             this.rdioNO.UseVisualStyleBackColor = true;
             // 
@@ -267,7 +272,7 @@
             this.rdioYES.Location = new System.Drawing.Point(251, 20);
             this.rdioYES.Name = "rdioYES";
             this.rdioYES.Size = new System.Drawing.Size(66, 32);
-            this.rdioYES.TabIndex = 5;
+            this.rdioYES.TabIndex = 7;
             this.rdioYES.TabStop = true;
             this.rdioYES.Text = "YES";
             this.rdioYES.UseVisualStyleBackColor = true;
@@ -279,8 +284,26 @@
             this.label3.Location = new System.Drawing.Point(9, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(207, 28);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 6;
             this.label3.Text = "AIRCON AVAILABILITY:";
+            // 
+            // txt_seat_price
+            // 
+            this.txt_seat_price.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_seat_price.Location = new System.Drawing.Point(267, 195);
+            this.txt_seat_price.Name = "txt_seat_price";
+            this.txt_seat_price.Size = new System.Drawing.Size(342, 34);
+            this.txt_seat_price.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(25, 198);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(114, 28);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "SEAT PRICE:";
             // 
             // FRM_MANAGE_CLASS
             // 
@@ -330,5 +353,7 @@
         private System.Windows.Forms.ToolStripTextBox toolStripTxt_search;
         private System.Windows.Forms.ToolStripButton toolStripBtn_cancel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.TextBox txt_seat_price;
+        private System.Windows.Forms.Label label5;
     }
 }

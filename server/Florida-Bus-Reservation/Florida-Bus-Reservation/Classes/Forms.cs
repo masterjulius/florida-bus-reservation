@@ -17,6 +17,7 @@ namespace Florida_Bus_Reservation.Classes
             dgv.ColumnCount = columnHeaders.Length;
             for (int i = 0; i < columnHeaders.Length; i++)
             {
+                dgv.Columns[i].Name = columnHeaders[i];
                 dgv.Columns[i].HeaderText = columnHeaders[i];
             }
         }

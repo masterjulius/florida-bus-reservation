@@ -123,6 +123,7 @@ namespace Florida_Bus_Reservation.BUS
         {
             this.txt_class_name.Clear();
             this.txt_number_of_seats.Clear();
+            this.txt_seat_price.Clear();
             this.rdioYES.Enabled = true;
             this.txt_remarks.Clear();
         }
@@ -199,14 +200,15 @@ namespace Florida_Bus_Reservation.BUS
 
                 using (MySqlConnection conn = new MySqlConnection(Connection.connStr))
                 {
-                    string stmtInsert = "insert into `tbl_bus_class` (`class_name`, `class_seat_count`, `class_has_aircon`, `class_remarks`, `class_created_by`) values (@class_name, @class_seat_count, @class_has_aircon, @class_remarks, @class_created_by)";
-                    string stmtUpdate = "update `tbl_bus_class` set `class_name`=@class_name, `class_seat_count`=@class_seat_count, `class_has_aircon`=@class_has_aircon, `class_remarks`=@class_remarks, `class_edited_by`=@class_edited_by where `class_id`=@class_id";
+                    string stmtInsert = "insert into `tbl_bus_class` (`class_name`, `class_seat_count`, `class_has_aircon`, `class_seat_price`, `class_remarks`, `class_created_by`) values (@class_name, @class_seat_count, @class_has_aircon, @class_seat_price, @class_remarks, @class_created_by)";
+                    string stmtUpdate = "update `tbl_bus_class` set `class_name`=@class_name, `class_seat_count`=@class_seat_count, `class_has_aircon`=@class_has_aircon, `class_seat_price`=@class_seat_price, `class_remarks`=@class_remarks, `class_edited_by`=@class_edited_by where `class_id`=@class_id";
                     string stmt = class_id != 0 ? stmtUpdate : stmtInsert;
                     using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
                     {
                         cmd.Parameters.Add("@class_name", MySqlDbType.VarChar).Value = this.txt_class_name.Text;
                         cmd.Parameters.Add("@class_seat_count", MySqlDbType.Int32).Value = this.txt_number_of_seats.Text;
                         cmd.Parameters.Add("@class_has_aircon", MySqlDbType.Bit).Value = this.has_aircon;
+                        cmd.Parameters.Add("@class_seat_price", MySqlDbType.Double).Value = Convert.ToDouble(this.txt_seat_price.Text);
                         cmd.Parameters.Add("@class_remarks", MySqlDbType.Text).Value = this.txt_remarks.Text;
                         if (0 != class_id)
                         {
@@ -310,10 +312,18 @@ namespace Florida_Bus_Reservation.BUS
         {
             if (this.action == 1)
             {
-                if (this._save_data() == true)
+                object[] obj = this._get_class_info(this.txt_class_name.Text);
+                if (obj != null)
                 {
-                    MessageBox.Show("Successfully added new bus class", "Additional Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.init_all();
+                    MessageBox.Show("Item already exists.", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    if (this._save_data() == true)
+                    {
+                        MessageBox.Show("Successfully added new bus class", "Additional Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.init_all();
+                    }
                 }
             }
             else if (this.action == 2)
@@ -333,8 +343,13 @@ namespace Florida_Bus_Reservation.BUS
 
         private void toolStripBtn_view_all_Click(object sender, EventArgs e)
         {
-            FRM_VIEW_ALL_BUS_CLASS frmViewAll = new FRM_VIEW_ALL_BUS_CLASS(this);
+            FRM_VIEW_ALL_BUS_CLASS frmViewAll = new FRM_VIEW_ALL_BUS_CLASS(this, this.txt_class_name);
             frmViewAll.ShowDialog(this);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         // -----------------------------------------------------------------------------------------------

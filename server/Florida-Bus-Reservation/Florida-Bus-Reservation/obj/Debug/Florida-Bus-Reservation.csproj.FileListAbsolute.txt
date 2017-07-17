@@ -18,3 +18,5 @@ C:\~dev\apps\android\bes\server\Florida-Bus-Reservation\Florida-Bus-Reservation\
 C:\~dev\apps\android\bes\server\Florida-Bus-Reservation\Florida-Bus-Reservation\obj\Debug\Florida_Bus_Reservation.RESERVATION.FRM_CLIENTS.resources
 C:\~dev\apps\android\bes\server\Florida-Bus-Reservation\Florida-Bus-Reservation\obj\Debug\Florida_Bus_Reservation.RESERVATION.FRM_ADD_EDIT_CLIENT.resources
 C:\~dev\apps\android\bes\server\Florida-Bus-Reservation\Florida-Bus-Reservation\obj\Debug\Florida_Bus_Reservation.RESERVATION.FRM_CURRENT_SCHEDULES.resources
+C:\~dev\apps\android\bes\server\Florida-Bus-Reservation\Florida-Bus-Reservation\obj\Debug\Florida_Bus_Reservation.RESERVATION.FRM_BUSSES_AVAILABLE.resources
+C:\~dev\apps\android\bes\server\Florida-Bus-Reservation\Florida-Bus-Reservation\obj\Debug\Florida_Bus_Reservation.RESERVATION.FRM_SEATS_AVAILABLE.resources

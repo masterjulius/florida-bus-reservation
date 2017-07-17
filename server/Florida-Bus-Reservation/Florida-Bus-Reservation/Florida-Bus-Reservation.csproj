@@ -93,6 +93,12 @@
     <Compile Include="RESERVATION\FRM_ADD_EDIT_CLIENT.Designer.cs">
       <DependentUpon>FRM_ADD_EDIT_CLIENT.cs</DependentUpon>
     </Compile>
+    <Compile Include="RESERVATION\FRM_BUSSES_AVAILABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_BUSSES_AVAILABLE.Designer.cs">
+      <DependentUpon>FRM_BUSSES_AVAILABLE.cs</DependentUpon>
+    </Compile>
     <Compile Include="RESERVATION\FRM_CLIENTS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,12 @@
     </Compile>
     <Compile Include="RESERVATION\FRM_MANAGE_RESERVATION.Designer.cs">
       <DependentUpon>FRM_MANAGE_RESERVATION.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_SEATS_AVAILABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RESERVATION\FRM_SEATS_AVAILABLE.Designer.cs">
+      <DependentUpon>FRM_SEATS_AVAILABLE.cs</DependentUpon>
     </Compile>
     <Compile Include="SCHEDULES\FRM_ADD_EDIT_SCHEDULES.cs">
       <SubType>Form</SubType>
@@ -154,6 +166,9 @@
     <EmbeddedResource Include="RESERVATION\FRM_ADD_EDIT_CLIENT.resx">
       <DependentUpon>FRM_ADD_EDIT_CLIENT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RESERVATION\FRM_BUSSES_AVAILABLE.resx">
+      <DependentUpon>FRM_BUSSES_AVAILABLE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RESERVATION\FRM_CLIENTS.resx">
       <DependentUpon>FRM_CLIENTS.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RESERVATION\FRM_MANAGE_RESERVATION.resx">
       <DependentUpon>FRM_MANAGE_RESERVATION.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RESERVATION\FRM_SEATS_AVAILABLE.resx">
+      <DependentUpon>FRM_SEATS_AVAILABLE.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SCHEDULES\FRM_ADD_EDIT_SCHEDULES.resx">
       <DependentUpon>FRM_ADD_EDIT_SCHEDULES.cs</DependentUpon>

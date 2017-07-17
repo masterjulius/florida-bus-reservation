@@ -326,10 +326,18 @@ namespace Florida_Bus_Reservation.BUS
         {
             if (this.action == 1)
             {
-                if (this._save_data() == true)
+                object[] obj = this._get_bus_info(this.txt_bus_number.Text);
+                if (obj != null)
                 {
-                    MessageBox.Show("Successfully added new bus class", "Additional Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.init_all();
+                    MessageBox.Show("Bus number already exists", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    if (this._save_data() == true)
+                    {
+                        MessageBox.Show("Successfully added new bus class", "Additional Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.init_all();
+                    }
                 }
             }
             else if (this.action == 2)

@@ -15,10 +15,12 @@ namespace Florida_Bus_Reservation.BUS
     {
         //initialize variables here
         private Form frmParent;
-        public FRM_VIEW_ALL_BUS_CLASS(Form frm)
+        private TextBox frmTxtBox;
+        public FRM_VIEW_ALL_BUS_CLASS(Form frm, TextBox txtBox)
         {
             InitializeComponent();
             this.frmParent = frm;
+            this.frmTxtBox = txtBox;
         }
 
         private void FRM_VIEW_ALL_BUS_CLASS_Load(object sender, EventArgs e)
@@ -124,11 +126,13 @@ namespace Florida_Bus_Reservation.BUS
 
         private void toolStripBtn_fetch_Click(object sender, EventArgs e)
         {
-            object[] getObject = this._get_datas(Convert.ToInt32(this.dgv_datas.SelectedRows[0].Cells["ID"].Value));
-            if (getObject != null)
-            {
-                //frmParent._full_data_extraction()
-            }
+            //object[] getObject = this._get_datas(Convert.ToInt32(this.dgv_datas.SelectedRows[0].Cells["ID"].Value));
+            //if (getObject != null)
+            //{
+                this.frmTxtBox.Text = this.dgv_datas.SelectedRows[0].Cells["CLASS NAME"].Value.ToString();
+                this.frmTxtBox.Tag = this.dgv_datas.SelectedRows[0].Cells["ID"].Value;
+                this.Dispose();
+            //}
         }
 
         private void toolStripTxt_search_KeyPress(object sender, KeyPressEventArgs e)

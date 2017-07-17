@@ -16,13 +16,16 @@ namespace Florida_Bus_Reservation.RESERVATION
         // Variables
         private int Action = 1;
         private Form frmParent;
-        private TextBox txtBoxParent;
+        private TextBox frmTxtBoxName, frmTxtContact;
+        private RichTextBox frmTxtAddress;
         Classes.Connection Connection = new Classes.Connection();
-        public FRM_CLIENTS(Form frm, TextBox txtBox)
+        public FRM_CLIENTS(Form frm, TextBox txtBox, TextBox txtContact, RichTextBox txtAddress)
         {
             InitializeComponent();
             this.frmParent = frm;
-            this.txtBoxParent = txtBox;
+            this.frmTxtBoxName = txtBox;
+            this.frmTxtContact = txtContact;
+            this.frmTxtAddress = txtAddress;
         }
 
         private void FRM_CLIENTS_Load(object sender, EventArgs e)
@@ -71,7 +74,7 @@ namespace Florida_Bus_Reservation.RESERVATION
         {
             using (MySqlConnection conn = new MySqlConnection(Connection.connStr))
             {
-                string stmt = "select `client_id`, `client_first_name` as `FIRST NAME`, `client_middle_name` as `MIDDLE NAME`, `client_last_name` as `LAST NAME` from `tbl_clients` where `client_is_active`=1 order by `client_last_name` ASC";
+                string stmt = "select `client_id`, `client_first_name` as `FIRST NAME`, `client_middle_name` as `MIDDLE NAME`, `client_last_name` as `LAST NAME`, `client_contact` as `CONTACT`, `client_address` as `ADDRESS` from `tbl_clients` where `client_is_active`=1 order by `client_last_name` ASC";
                 using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
                 {
                     MySqlDataAdapter da = new MySqlDataAdapter();
@@ -146,8 +149,10 @@ namespace Florida_Bus_Reservation.RESERVATION
         {
             if (this.dgv_clients.SelectedRows.Count > 0)
             {
-                this.txtBoxParent.Text = this.dgv_clients.SelectedRows[0].Cells["LAST NAME"].Value.ToString() + ", " + this.dgv_clients.SelectedRows[0].Cells["FIRST NAME"].Value.ToString() + ", " + this.dgv_clients.SelectedRows[0].Cells["MIDDLE NAME"].Value.ToString();
-                this.txtBoxParent.Tag = this.dgv_clients.SelectedRows[0].Cells["client_id"].Value;
+                this.frmTxtBoxName.Text = this.dgv_clients.SelectedRows[0].Cells["LAST NAME"].Value.ToString() + ", " + this.dgv_clients.SelectedRows[0].Cells["FIRST NAME"].Value.ToString() + ", " + this.dgv_clients.SelectedRows[0].Cells["MIDDLE NAME"].Value.ToString();
+                this.frmTxtBoxName.Tag = this.dgv_clients.SelectedRows[0].Cells["client_id"].Value;
+                this.frmTxtContact.Text = this.dgv_clients.SelectedRows[0].Cells["CONTACT"].Value.ToString();
+                this.frmTxtAddress.Text = this.dgv_clients.SelectedRows[0].Cells["ADDRESS"].Value.ToString();
                 this.Dispose();
             }
         }
