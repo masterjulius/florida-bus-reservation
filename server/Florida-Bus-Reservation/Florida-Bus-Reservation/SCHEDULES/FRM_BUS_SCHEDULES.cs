@@ -46,7 +46,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
             Classes.Connection Connection = new Classes.Connection();
             using (MySqlConnection conn = new MySqlConnection(Connection.connStr))
             {
-                string stmt = "select `tbl_schedules`.`sched_id`, `tbl_bus`.`bus_number` as `BUS NUMBER`, DATE_FORMAT(`tbl_schedules`.`sched_departure_time`, '%h:%i:%s %p') as `DEPARTURE TIME` from `tbl_schedules` left join `tbl_bus` on `tbl_schedules`.`sched_bus_id`=`tbl_bus`.`bus_id` where DATE_FORMAT(`sched_date`, '%c/%d/%Y')=@sched_date and `sched_is_active`=1 order by `sched_departure_time` ASC";
+                string stmt = "select `tbl_schedules`.`sched_id`, `tbl_schedules`.`sched_auto_departure`, `tbl_bus`.`bus_number` as `BUS NUMBER`, DATE_FORMAT(`tbl_schedules`.`sched_departure_time`, '%h:%i:%s %p') as `DEPARTURE TIME` from `tbl_schedules` left join `tbl_bus` on `tbl_schedules`.`sched_bus_id`=`tbl_bus`.`bus_id` where DATE_FORMAT(`sched_date`, '%c/%d/%Y')=@sched_date and `sched_is_active`=1 order by `sched_departure_time` ASC";
 
                 using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
                 {
@@ -61,7 +61,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
                     dgv.DataSource = dt;
 
                     // hide datagridview columns
-                    Classes.Forms._hide_datagridview_column(this.dgv_schedules, new string[] { "sched_id" });
+                    Classes.Forms._hide_datagridview_column(this.dgv_schedules, new string[] { "sched_id", "sched_auto_departure" });
 
                     // call the format dgv method
                     this._format_datagridview(this.dgv_schedules);
@@ -118,8 +118,10 @@ namespace Florida_Bus_Reservation.SCHEDULES
                 DateTime dtime = DateTime.Now;
                 string currTime = dtime.ToString("h:mm:ss tt"), dgvCellTime = dgv.Rows[i].Cells["DEPARTURE TIME"].Value.ToString();
                 double diff = (Convert.ToDateTime(dgvCellTime) - Convert.ToDateTime(currTime)).TotalMinutes;
+
+                Boolean autoDepart = Convert.ToBoolean(dgv.Rows[i].Cells["sched_auto_departure"].Value);
                 
-                if (diff <= 0)
+                if (diff <= 0 && autoDepart == true)
                 {
                     dgv.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(0, 150, 136);
                 }

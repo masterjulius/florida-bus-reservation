@@ -37,6 +37,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
         {
             this._load_bus_numbers_to_combobox(cb_bus_number);
             this._manage_allowed_dates(this.dtp_sched);
+            this.chk_auto_departure.Checked = true;
 
             if (this.bus_schedule_id != 0)
             {
@@ -56,7 +57,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
             Classes.Connection Connection = new Classes.Connection();
             using (MySqlConnection conn = new MySqlConnection(Connection.connStr))
             {
-                string stmt = "select `sched_bus_id`, DATE_FORMAT(`sched_date`, '%c/%d/%Y') as `sched_date`, DATE_FORMAT(`sched_departure_time`, '%h:%i:%s %p') as `sched_departure_time`, `sched_name`, `sched_description` from `tbl_schedules` where `sched_id`=@sched_id and `sched_is_active`=1";
+                string stmt = "select `sched_bus_id`, DATE_FORMAT(`sched_date`, '%c/%d/%Y') as `sched_date`, DATE_FORMAT(`sched_departure_time`, '%h:%i:%s %p') as `sched_departure_time`, `sched_name`, `sched_description`, `sched_auto_departure` from `tbl_schedules` where `sched_id`=@sched_id and `sched_is_active`=1";
                 using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
                 {
                     cmd.Parameters.Add("@sched_id", MySqlDbType.Int32).Value = sched_id;
@@ -64,7 +65,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
                     MySqlDataReader dr = cmd.ExecuteReader();
                     if (dr.HasRows)
                     {
-                        object[] returnDatas = new object[5];
+                        object[] returnDatas = new object[6];
                         while (dr.Read())
                         {
                             returnDatas[0] = dr["sched_bus_id"];
@@ -72,6 +73,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
                             returnDatas[2] = dr["sched_departure_time"];
                             returnDatas[3] = dr["sched_name"];
                             returnDatas[4] = dr["sched_description"];
+                            returnDatas[5] = dr["sched_auto_departure"];
                         }
                         return returnDatas;
                     }
@@ -90,6 +92,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
             this.dtp_departure_time.Value = Convert.ToDateTime(obj[2]);
             this.txt_sched_name.Text = obj[3].ToString();
             this.txt_description.Text = obj[4].ToString();
+            this.chk_auto_departure.Checked = Convert.ToBoolean(obj[5]);
         }
 
         private void _load_bus_numbers_to_combobox(ComboBox cmb)
@@ -97,7 +100,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
             Classes.Connection Connection = new Classes.Connection();
             using (MySqlConnection conn = new MySqlConnection(Connection.connStr))
             {
-                string stmt = "select `bus_id`, `bus_number` from `tbl_bus` where `bus_is_active`=1 order by CAST(`bus_number` as SIGNED INTEGER) ASC";
+                string stmt = "select `tbl_bus`.`bus_id`, `tbl_bus`.`bus_number` from `tbl_bus` where `tbl_bus`.`bus_is_active`=1 and `tbl_bus`.`bus_id` not in (select `tbl_schedules`.`sched_bus_id` from `tbl_schedules` where `tbl_schedules`.`sched_is_active`=1 and TIMESTAMP(`tbl_schedules`.`sched_date`, `tbl_schedules`.`sched_departure_time`)>=CURRENT_TIMESTAMP()) order by CAST(`bus_number` as SIGNED INTEGER) ASC";
                 using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
                 {
                     Dictionary<int, string> listItems = new Dictionary<int, string>();
@@ -110,6 +113,11 @@ namespace Florida_Bus_Reservation.SCHEDULES
                         {
                             listItems.Add(Convert.ToInt32(dr["bus_id"]), dr["bus_number"].ToString());
                         }
+                    }
+                    else
+                    {
+                        this.cb_bus_number.Enabled = false;
+                        this.btn_save.Enabled = false;
                     }
                     dr.Close();
                     conn.Close();
@@ -129,9 +137,9 @@ namespace Florida_Bus_Reservation.SCHEDULES
             Classes.Connection Connection = new Classes.Connection();
             using (MySqlConnection conn = new MySqlConnection(Connection.connStr))
             {
-                string stmtAdd = "insert into `tbl_schedules` (`sched_bus_id`, `sched_date`, `sched_departure_time`, `sched_name`, `sched_description`, `sched_created_by`) values (@sched_bus_id, @sched_date, @sched_departure_time, @sched_name, @sched_description, @sched_created_by)";
+                string stmtAdd = "insert into `tbl_schedules` (`sched_bus_id`, `sched_date`, `sched_departure_time`, `sched_name`, `sched_description`, `sched_created_by`, `sched_auto_departure`) values (@sched_bus_id, @sched_date, @sched_departure_time, @sched_name, @sched_description, @sched_created_by, @sched_auto_departure)";
 
-                string stmtUpdate = "update `tbl_schedules` set `sched_bus_id`=@sched_bus_id, `sched_date`=@sched_date, `sched_departure_time`=@sched_departure_time, `sched_name`=@sched_name, `sched_description`=@sched_description, `sched_edited_by`=@sched_edited_by where `sched_id`=@sched_id and `sched_is_active`=1";
+                string stmtUpdate = "update `tbl_schedules` set `sched_bus_id`=@sched_bus_id, `sched_date`=@sched_date, `sched_departure_time`=@sched_departure_time, `sched_name`=@sched_name, `sched_description`=@sched_description, `sched_auto_departure`=@sched_auto_departure, `sched_edited_by`=@sched_edited_by where `sched_id`=@sched_id and `sched_is_active`=1";
 
                 string stmt = schedule_id != 0 ? stmtUpdate : stmtAdd;
                 using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
@@ -141,6 +149,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
                     cmd.Parameters.Add("@sched_departure_time", MySqlDbType.DateTime).Value = this.dtp_departure_time.Value;
                     cmd.Parameters.Add("@sched_name", MySqlDbType.Text).Value = this.txt_sched_name.Text;
                     cmd.Parameters.Add("@sched_description", MySqlDbType.Text).Value = this.txt_description.Text;
+                    cmd.Parameters.Add("@sched_auto_departure", MySqlDbType.Bit).Value = this.chk_auto_departure.Checked;
 
                     if (0 != schedule_id)
                     {
@@ -175,6 +184,7 @@ namespace Florida_Bus_Reservation.SCHEDULES
             this.dtp_departure_time.Value = Convert.ToDateTime(dtime.ToString("h:mm:ss tt"));
             this.txt_sched_name.Clear();
             this.txt_description.Clear();
+            this.chk_auto_departure.Checked = true;
         }
 
         // managing min and max dates

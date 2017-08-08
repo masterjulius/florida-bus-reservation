@@ -4,7 +4,7 @@ Your account is now active.
 Main Hosting Details
 Control panel username
 b32_20303307
-Control panel password	**********
+Control panel password	nancyPAGULAYAN08
 Control panel URL
 cpanel.byethost32.com
 MySQL username

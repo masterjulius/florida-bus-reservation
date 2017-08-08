@@ -29,12 +29,18 @@
         private void InitializeComponent()
         {
             this.toolStrip_action_menus = new System.Windows.Forms.ToolStrip();
+            this.toolStripBtn_new = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtn_edit = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtn_delete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtn_save = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripBtn_cancel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripTxt_search = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripBtn_view_all = new System.Windows.Forms.ToolStripButton();
             this.panel_main = new System.Windows.Forms.Panel();
             this.btn_schedule = new System.Windows.Forms.Button();
             this.txt_schedule = new System.Windows.Forms.TextBox();
@@ -59,12 +65,6 @@
             this.rdio_online = new System.Windows.Forms.RadioButton();
             this.rdio_walk_in = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.toolStripBtn_new = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtn_edit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtn_delete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtn_save = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtn_cancel = new System.Windows.Forms.ToolStripButton();
-            this.toolStripBtn_view_all = new System.Windows.Forms.ToolStripButton();
             this.toolStrip_action_menus.SuspendLayout();
             this.panel_main.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -94,25 +94,67 @@
             this.toolStrip_action_menus.TabIndex = 2;
             this.toolStrip_action_menus.Text = "toolStrip1";
             // 
+            // toolStripBtn_new
+            // 
+            this.toolStripBtn_new.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Plus_Math_40;
+            this.toolStripBtn_new.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_new.Name = "toolStripBtn_new";
+            this.toolStripBtn_new.Size = new System.Drawing.Size(78, 29);
+            this.toolStripBtn_new.Text = "NEW";
+            this.toolStripBtn_new.Click += new System.EventHandler(this.toolStripBtn_new_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            // 
+            // toolStripBtn_edit
+            // 
+            this.toolStripBtn_edit.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Edit_40;
+            this.toolStripBtn_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_edit.Name = "toolStripBtn_edit";
+            this.toolStripBtn_edit.Size = new System.Drawing.Size(74, 29);
+            this.toolStripBtn_edit.Text = "EDIT";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
             // 
+            // toolStripBtn_delete
+            // 
+            this.toolStripBtn_delete.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Trash_Can_40;
+            this.toolStripBtn_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_delete.Name = "toolStripBtn_delete";
+            this.toolStripBtn_delete.Size = new System.Drawing.Size(98, 29);
+            this.toolStripBtn_delete.Text = "DELETE";
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
             // 
+            // toolStripBtn_save
+            // 
+            this.toolStripBtn_save.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Save_40;
+            this.toolStripBtn_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_save.Name = "toolStripBtn_save";
+            this.toolStripBtn_save.Size = new System.Drawing.Size(79, 29);
+            this.toolStripBtn_save.Text = "SAVE";
+            this.toolStripBtn_save.Click += new System.EventHandler(this.toolStripBtn_save_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 32);
+            // 
+            // toolStripBtn_cancel
+            // 
+            this.toolStripBtn_cancel.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Cancel_2_40;
+            this.toolStripBtn_cancel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_cancel.Name = "toolStripBtn_cancel";
+            this.toolStripBtn_cancel.Size = new System.Drawing.Size(105, 29);
+            this.toolStripBtn_cancel.Text = "CANCEL";
             // 
             // toolStripSeparator6
             // 
@@ -125,6 +167,14 @@
             this.toolStripTxt_search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.toolStripTxt_search.Name = "toolStripTxt_search";
             this.toolStripTxt_search.Size = new System.Drawing.Size(300, 32);
+            // 
+            // toolStripBtn_view_all
+            // 
+            this.toolStripBtn_view_all.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Search_40;
+            this.toolStripBtn_view_all.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripBtn_view_all.Name = "toolStripBtn_view_all";
+            this.toolStripBtn_view_all.Size = new System.Drawing.Size(116, 29);
+            this.toolStripBtn_view_all.Text = "VIEW ALL";
             // 
             // panel_main
             // 
@@ -166,6 +216,7 @@
             this.btn_schedule.TabIndex = 21;
             this.btn_schedule.Text = "...";
             this.btn_schedule.UseVisualStyleBackColor = true;
+            this.btn_schedule.Visible = false;
             this.btn_schedule.Click += new System.EventHandler(this.btn_schedule_Click);
             // 
             // txt_schedule
@@ -176,6 +227,7 @@
             this.txt_schedule.ReadOnly = true;
             this.txt_schedule.Size = new System.Drawing.Size(403, 34);
             this.txt_schedule.TabIndex = 20;
+            this.txt_schedule.Visible = false;
             // 
             // label9
             // 
@@ -186,6 +238,7 @@
             this.label9.Size = new System.Drawing.Size(153, 25);
             this.label9.TabIndex = 19;
             this.label9.Text = "SCHEDULE TIME:";
+            this.label9.Visible = false;
             // 
             // txt_passenger_contact
             // 
@@ -387,56 +440,6 @@
             this.label1.Size = new System.Drawing.Size(180, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "RESERVATION TYPE:";
-            // 
-            // toolStripBtn_new
-            // 
-            this.toolStripBtn_new.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Plus_Math_40;
-            this.toolStripBtn_new.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtn_new.Name = "toolStripBtn_new";
-            this.toolStripBtn_new.Size = new System.Drawing.Size(78, 29);
-            this.toolStripBtn_new.Text = "NEW";
-            this.toolStripBtn_new.Click += new System.EventHandler(this.toolStripBtn_new_Click);
-            // 
-            // toolStripBtn_edit
-            // 
-            this.toolStripBtn_edit.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Edit_40;
-            this.toolStripBtn_edit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtn_edit.Name = "toolStripBtn_edit";
-            this.toolStripBtn_edit.Size = new System.Drawing.Size(74, 29);
-            this.toolStripBtn_edit.Text = "EDIT";
-            // 
-            // toolStripBtn_delete
-            // 
-            this.toolStripBtn_delete.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Trash_Can_40;
-            this.toolStripBtn_delete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtn_delete.Name = "toolStripBtn_delete";
-            this.toolStripBtn_delete.Size = new System.Drawing.Size(98, 29);
-            this.toolStripBtn_delete.Text = "DELETE";
-            // 
-            // toolStripBtn_save
-            // 
-            this.toolStripBtn_save.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Save_40;
-            this.toolStripBtn_save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtn_save.Name = "toolStripBtn_save";
-            this.toolStripBtn_save.Size = new System.Drawing.Size(79, 29);
-            this.toolStripBtn_save.Text = "SAVE";
-            this.toolStripBtn_save.Click += new System.EventHandler(this.toolStripBtn_save_Click);
-            // 
-            // toolStripBtn_cancel
-            // 
-            this.toolStripBtn_cancel.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Cancel_2_40;
-            this.toolStripBtn_cancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtn_cancel.Name = "toolStripBtn_cancel";
-            this.toolStripBtn_cancel.Size = new System.Drawing.Size(105, 29);
-            this.toolStripBtn_cancel.Text = "CANCEL";
-            // 
-            // toolStripBtn_view_all
-            // 
-            this.toolStripBtn_view_all.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Search_40;
-            this.toolStripBtn_view_all.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripBtn_view_all.Name = "toolStripBtn_view_all";
-            this.toolStripBtn_view_all.Size = new System.Drawing.Size(116, 29);
-            this.toolStripBtn_view_all.Text = "VIEW ALL";
             // 
             // FRM_MANAGE_RESERVATION
             // 

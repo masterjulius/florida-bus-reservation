@@ -191,18 +191,21 @@
             this.mANAGERESERVATIONSToolStripMenuItem.Name = "mANAGERESERVATIONSToolStripMenuItem";
             this.mANAGERESERVATIONSToolStripMenuItem.Size = new System.Drawing.Size(309, 30);
             this.mANAGERESERVATIONSToolStripMenuItem.Text = "MANAGE RESERVATIONS";
+            this.mANAGERESERVATIONSToolStripMenuItem.Visible = false;
             this.mANAGERESERVATIONSToolStripMenuItem.Click += new System.EventHandler(this.mANAGERESERVATIONSToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(306, 6);
+            this.toolStripSeparator6.Visible = false;
             // 
             // mANAGEPAYMENTToolStripMenuItem
             // 
             this.mANAGEPAYMENTToolStripMenuItem.Name = "mANAGEPAYMENTToolStripMenuItem";
             this.mANAGEPAYMENTToolStripMenuItem.Size = new System.Drawing.Size(309, 30);
-            this.mANAGEPAYMENTToolStripMenuItem.Text = "MANAGE PAYMENT";
+            this.mANAGEPAYMENTToolStripMenuItem.Text = "MANAGE PAYMENTS";
+            this.mANAGEPAYMENTToolStripMenuItem.Click += new System.EventHandler(this.mANAGEPAYMENTToolStripMenuItem_Click);
             // 
             // vIEWTRANSACTIONSToolStripMenuItem
             // 

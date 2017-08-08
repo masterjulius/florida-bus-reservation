@@ -135,6 +135,18 @@
     <Compile Include="SCHEDULES\FRM_BUS_SCHEDULES.Designer.cs">
       <DependentUpon>FRM_BUS_SCHEDULES.cs</DependentUpon>
     </Compile>
+    <Compile Include="TRANSACTIONS\FRM_PAYMENTS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRANSACTIONS\FRM_PAYMENTS.Designer.cs">
+      <DependentUpon>FRM_PAYMENTS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TRANSACTIONS\FRM_PAY_BILL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TRANSACTIONS\FRM_PAY_BILL.Designer.cs">
+      <DependentUpon>FRM_PAY_BILL.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BUS\FRM_MANAGE_BUS.resx">
       <DependentUpon>FRM_MANAGE_BUS.cs</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +199,12 @@
     <EmbeddedResource Include="SCHEDULES\FRM_BUS_SCHEDULES.resx">
       <DependentUpon>FRM_BUS_SCHEDULES.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TRANSACTIONS\FRM_PAYMENTS.resx">
+      <DependentUpon>FRM_PAYMENTS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TRANSACTIONS\FRM_PAY_BILL.resx">
+      <DependentUpon>FRM_PAY_BILL.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -235,6 +253,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-Checked-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Coins-40.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

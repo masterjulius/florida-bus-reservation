@@ -100,5 +100,11 @@ namespace Florida_Bus_Reservation
             frmManageReservation.ShowDialog(this);
         }
 
+        private void mANAGEPAYMENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TRANSACTIONS.FRM_PAYMENTS frmPayments = new TRANSACTIONS.FRM_PAYMENTS();
+            frmPayments.ShowDialog(this);
+        }
+
     }
 }

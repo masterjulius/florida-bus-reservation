@@ -159,13 +159,10 @@ namespace Florida_Bus_Reservation.RESERVATION
                 string stmtUpdate = "";
                 string stmt = reservation_id != null ? stmtUpdate : stmtInsert;
 
-                //string reservation_code = "CONCAT( 'GV', DATE_FORMAT(current_timestamp(), '%y%m%d%h%m%s'), CONCAT( FLOOR(RAND()*(9-0+1))+0, FLOOR(RAND()*(9-0+1))+0, FLOOR(RAND()*(9-0+1))+0) )";
-                //MessageBox.Show(reservation_code.Length.ToString());
                 using (MySqlCommand cmd = new MySqlCommand(stmt, conn))
                 {
                     cmd.Parameters.Add("@res_sched_id", MySqlDbType.Int32).Value = Convert.ToInt32(this.txt_schedule.Tag);
                     cmd.Parameters.Add("@res_type", MySqlDbType.Bit).Value = reservation_type;
-                    //cmd.Parameters.Add("@res_code", MySqlDbType.VarChar).Value = reservation_code;
                     cmd.Parameters.Add("@res_bus_class_id", MySqlDbType.Int32).Value = Convert.ToInt32(this.txt_bus_class.Tag);
                     cmd.Parameters.Add("@res_bus_id", MySqlDbType.Int32).Value = Convert.ToInt32(this.txt_bus_number.Tag);
                     cmd.Parameters.Add("@res_seat_numbers", MySqlDbType.VarChar).Value = this.txt_seat_numbers.Text;
@@ -209,18 +206,16 @@ namespace Florida_Bus_Reservation.RESERVATION
                     // get the seat price
                     object[] obj = this._get_datas_by_id(last_id);
                     double seatPrice = Convert.ToDouble(obj[6]);
-                    MessageBox.Show("Seat Price is: " + seatPrice.ToString());
+                    double totalPrice = 0;
+                    //MessageBox.Show("Seat Price is: " + seatPrice.ToString());
 
                     for (int i = 0; i < splittedChars.Length; i++)
                     {
-                        if (i > 0)
-                        {
-                            seatPrice *= i;
-                        }
+                        totalPrice += seatPrice;
                     }
-                    MessageBox.Show("Total is: " + seatPrice.ToString());
+                    //MessageBox.Show("Total is: " + totalPrice.ToString());
 
-                    cmd.Parameters.Add("@TRANS_TOTAL_PAYMENT", MySqlDbType.Double).Value = seatPrice;
+                    cmd.Parameters.Add("@TRANS_TOTAL_PAYMENT", MySqlDbType.Double).Value = totalPrice;
                     conn.Open();
                     int affectedRows = Convert.ToInt32(cmd.ExecuteNonQuery());
                     conn.Close();
@@ -287,6 +282,7 @@ namespace Florida_Bus_Reservation.RESERVATION
                     if (this._save_to_transactions(Convert.ToInt32(reservation_last_id)) == true)
                     {
                         MessageBox.Show("Successsfully added reservation", "Additional Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this._clear_input_fields();
                     }
                 }
             }

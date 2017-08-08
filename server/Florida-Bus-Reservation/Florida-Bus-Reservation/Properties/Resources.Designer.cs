@@ -93,6 +93,16 @@ namespace Florida_Bus_Reservation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Coins_40 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-Coins-40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Delete_40 {
             get {
                 object obj = ResourceManager.GetObject("icons8-Delete-40", resourceCulture);

@@ -39,6 +39,8 @@
             this.dtp_sched = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.dtp_departure_time = new System.Windows.Forms.DateTimePicker();
+            this.chk_auto_departure = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -102,10 +104,10 @@
             this.btn_save.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
             this.btn_save.Image = global::Florida_Bus_Reservation.Properties.Resources.icons8_Save_40;
             this.btn_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_save.Location = new System.Drawing.Point(26, 636);
+            this.btn_save.Location = new System.Drawing.Point(26, 732);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(379, 60);
-            this.btn_save.TabIndex = 10;
+            this.btn_save.TabIndex = 12;
             this.btn_save.Text = "SAVE";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
@@ -153,11 +155,36 @@
             this.dtp_departure_time.Size = new System.Drawing.Size(379, 31);
             this.dtp_departure_time.TabIndex = 5;
             // 
+            // chk_auto_departure
+            // 
+            this.chk_auto_departure.AutoSize = true;
+            this.chk_auto_departure.Checked = true;
+            this.chk_auto_departure.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chk_auto_departure.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold);
+            this.chk_auto_departure.Location = new System.Drawing.Point(53, 685);
+            this.chk_auto_departure.Name = "chk_auto_departure";
+            this.chk_auto_departure.Size = new System.Drawing.Size(195, 29);
+            this.chk_auto_departure.TabIndex = 11;
+            this.chk_auto_departure.Text = "AUTO-DEPARTURE";
+            this.chk_auto_departure.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(21, 644);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(206, 25);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "ADDITIONAL OPTIONS:";
+            // 
             // FRM_ADD_EDIT_SCHEDULES
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(444, 719);
+            this.ClientSize = new System.Drawing.Size(444, 813);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.chk_auto_departure);
             this.Controls.Add(this.dtp_departure_time);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtp_sched);
@@ -191,5 +218,7 @@
         private System.Windows.Forms.DateTimePicker dtp_sched;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtp_departure_time;
+        private System.Windows.Forms.CheckBox chk_auto_departure;
+        private System.Windows.Forms.Label label6;
     }
 }

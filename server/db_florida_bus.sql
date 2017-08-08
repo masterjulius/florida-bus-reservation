@@ -33,7 +33,7 @@ CREATE TABLE `tbl_bus` (
   `bus_edited_by` int(11) NOT NULL DEFAULT '0',
   `bus_is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`bus_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `tbl_bus` (
 
 LOCK TABLES `tbl_bus` WRITE;
 /*!40000 ALTER TABLE `tbl_bus` DISABLE KEYS */;
-INSERT INTO `tbl_bus` VALUES (2,2,'123','QWER1234','2017-07-08 21:21:52',0,'2017-07-08 21:47:55',0,1),(3,2,'800','QWE431','2017-07-09 18:44:25',1,'2017-07-09 18:44:25',0,1);
+INSERT INTO `tbl_bus` VALUES (2,2,'123','QWER1234','2017-07-08 21:21:52',0,'2017-07-08 21:47:55',0,1),(3,2,'800','QWE431','2017-07-09 18:44:25',1,'2017-07-09 18:44:25',0,1),(4,5,'99999','876543SF','2017-07-17 11:22:16',1,'2017-07-17 11:22:16',0,1);
 /*!40000 ALTER TABLE `tbl_bus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,6 +58,7 @@ CREATE TABLE `tbl_bus_class` (
   `class_name` varchar(55) NOT NULL,
   `class_seat_count` tinyint(4) NOT NULL DEFAULT '50',
   `class_has_aircon` tinyint(4) NOT NULL DEFAULT '1',
+  `class_seat_price` double NOT NULL DEFAULT '0',
   `class_remarks` text,
   `class_created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `class_created_by` int(11) NOT NULL DEFAULT '0',
@@ -65,7 +66,7 @@ CREATE TABLE `tbl_bus_class` (
   `class_edited_by` int(11) NOT NULL DEFAULT '0',
   `class_is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`class_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +75,7 @@ CREATE TABLE `tbl_bus_class` (
 
 LOCK TABLES `tbl_bus_class` WRITE;
 /*!40000 ALTER TABLE `tbl_bus_class` DISABLE KEYS */;
-INSERT INTO `tbl_bus_class` VALUES (1,'AAA',60,0,'afafafaf','2017-07-03 00:56:37',1,'2017-07-03 22:56:27',0,0),(2,'BBB',60,1,'fafa afafaf','2017-07-03 18:33:13',1,'2017-07-11 21:08:38',1,1),(3,'CCC',55,1,'fafafafa','2017-07-03 18:35:55',1,'2017-07-03 22:54:37',1,0),(4,'Super Deluxe',60,1,'Nothing','2017-07-09 18:43:19',1,'2017-07-09 18:43:36',1,0);
+INSERT INTO `tbl_bus_class` VALUES (1,'AAA',60,0,0,'afafafaf','2017-07-03 00:56:37',1,'2017-07-03 22:56:27',0,0),(2,'BBB',60,1,0,'fafa afafaf','2017-07-03 18:33:13',1,'2017-07-11 21:08:38',1,1),(3,'CCC',55,1,0,'fafafafa','2017-07-03 18:35:55',1,'2017-07-03 22:54:37',1,0),(4,'Super Deluxe',60,1,0,'Nothing','2017-07-09 18:43:19',1,'2017-07-09 18:43:36',1,0),(5,'Deluxe',55,1,150,'','2017-07-17 09:08:19',1,'2017-07-17 09:08:19',0,1),(6,'Special',65,1,500,'','2017-07-17 09:25:09',1,'2017-07-17 09:25:09',0,1);
 /*!40000 ALTER TABLE `tbl_bus_class` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,6 +166,8 @@ DROP TABLE IF EXISTS `tbl_clients`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_clients` (
   `client_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `client_username` varchar(90) DEFAULT NULL,
+  `client_password` varchar(85) DEFAULT NULL,
   `client_first_name` varchar(200) NOT NULL,
   `client_middle_name` varchar(200) DEFAULT NULL,
   `client_last_name` varchar(200) NOT NULL,
@@ -176,7 +179,7 @@ CREATE TABLE `tbl_clients` (
   `client_edited_by` int(11) NOT NULL DEFAULT '0',
   `client_is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`client_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -185,7 +188,7 @@ CREATE TABLE `tbl_clients` (
 
 LOCK TABLES `tbl_clients` WRITE;
 /*!40000 ALTER TABLE `tbl_clients` DISABLE KEYS */;
-INSERT INTO `tbl_clients` VALUES (1,'John','Foo','Doe','0987654321','Sample Street.','2017-07-15 09:59:35',0,'2017-07-15 10:55:49',0,0),(2,'Joyce','Bradshaw','Pring','1234567890','DJ','2017-07-15 10:02:21',0,'2017-07-15 10:36:31',0,1),(3,'Obey','Your','Master','0987654321','Metallica Street, Trash Town, Metal State','2017-07-15 10:52:42',0,'2017-07-15 10:53:38',0,1),(4,'bxbx','sgsgs','gsgs','098765432','adad','2017-07-15 10:54:11',0,'2017-07-15 10:54:11',0,1);
+INSERT INTO `tbl_clients` VALUES (1,NULL,NULL,'John','Foo','Doe','0987654321','Sample Street.','2017-07-15 09:59:35',0,'2017-07-15 10:55:49',0,0),(2,NULL,NULL,'Joyce','Bradshaw','Pring','1234567890','DJ','2017-07-15 10:02:21',0,'2017-07-15 10:36:31',0,1),(3,NULL,NULL,'Obey','Your','Master','0987654321','Metallica Street, Trash Town, Metal State','2017-07-15 10:52:42',0,'2017-07-15 10:53:38',0,1),(4,NULL,NULL,'bxbx','sgsgs','gsgs','098765432','adad','2017-07-15 10:54:11',0,'2017-07-15 10:54:11',0,1),(5,NULL,NULL,'nccn','qrqrq','zvzv','65432','wtwt tw w','2017-07-28 15:32:00',0,'2017-07-28 15:32:00',0,1),(6,NULL,NULL,'nccn','qrqrq','zvzv','65432','wtwt tw w','2017-07-28 15:32:03',0,'2017-07-28 15:32:03',0,1),(7,NULL,NULL,'Julius','Bucaling','Palcong','09975445375','Newagac, Gattaran,Cagayan, Philippines','2017-07-28 15:51:05',0,'2017-07-28 15:51:05',0,1),(8,'sam','123','fahafhj','hjafhjhjf','afhjafhj','123','fafhahj','2017-07-28 16:45:41',0,'2017-07-28 16:45:41',0,1),(9,'asd','123','zxc','qwe','fgh','1234567890','itu gd','2017-07-29 17:37:54',0,'2017-07-29 17:37:54',0,1),(10,'rogielyn','123','Rogielyn','Asuncion','Cuevas','123456','Apayao, Philippines','2017-07-30 12:49:05',0,'2017-07-30 12:49:05',0,1),(11,'rogielyn','123','Rogielyn','Asuncion','Cuevas','123456','Apayao, Philippines','2017-07-30 12:49:05',0,'2017-07-30 12:49:05',0,1),(12,'rogielyn','123','Rogielyn','Asuncion','Cuevas','123456','Apayao, Philippines','2017-07-30 12:49:21',0,'2017-07-30 12:49:21',0,1);
 /*!40000 ALTER TABLE `tbl_clients` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,10 +253,11 @@ CREATE TABLE `tbl_reservations` (
   `res_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `res_sched_id` bigint(20) NOT NULL,
   `res_type` tinyint(4) NOT NULL DEFAULT '1',
-  `res_code` varchar(12) NOT NULL,
+  `res_code` varchar(25) NOT NULL,
   `res_bus_class_id` int(11) DEFAULT NULL,
   `res_bus_id` bigint(20) NOT NULL,
   `res_seat_numbers` varchar(255) NOT NULL,
+  `res_is_cancelled` tinyint(1) NOT NULL DEFAULT '0',
   `res_client_id` bigint(20) NOT NULL,
   `res_created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `res_created_by` int(11) NOT NULL DEFAULT '0',
@@ -261,7 +265,7 @@ CREATE TABLE `tbl_reservations` (
   `res_edited_by` int(11) DEFAULT '0',
   `res_is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`res_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -270,6 +274,7 @@ CREATE TABLE `tbl_reservations` (
 
 LOCK TABLES `tbl_reservations` WRITE;
 /*!40000 ALTER TABLE `tbl_reservations` DISABLE KEYS */;
+INSERT INTO `tbl_reservations` VALUES (5,0,1,'GV-170717110751-511',5,13,'1:2:3:4:5',0,4,'2017-07-17 11:58:51',0,'2017-07-17 11:58:51',0,1),(6,0,1,'GV-170717120700-374',5,13,'1:2:3:4:5',0,3,'2017-07-17 12:02:00',0,'2017-07-17 12:02:00',0,1),(7,0,1,'GV-170718100731-700',5,13,'1:2:3:4:5',0,3,'2017-07-18 10:05:31',0,'2017-07-18 10:05:31',0,1),(8,0,1,'GV-170718100730-231',5,13,'1:2:3:4:5',0,4,'2017-07-18 10:10:30',0,'2017-07-18 10:10:30',0,1),(9,0,1,'GV-170718100737-098',2,15,'1:2:3:4:5',0,4,'2017-07-18 10:12:37',0,'2017-07-18 10:12:37',0,1),(10,0,1,'GV-170718100715-507',5,13,'1:2:3:4:5',0,4,'2017-07-18 10:14:15',0,'2017-07-18 10:14:15',0,1);
 /*!40000 ALTER TABLE `tbl_reservations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -309,17 +314,18 @@ DROP TABLE IF EXISTS `tbl_schedules`;
 CREATE TABLE `tbl_schedules` (
   `sched_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `sched_bus_id` bigint(20) NOT NULL,
-  `sched_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `sched_departure_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `sched_date` date DEFAULT NULL,
+  `sched_departure_time` time(6) DEFAULT NULL,
   `sched_name` tinytext,
   `sched_description` text,
+  `sched_auto_departure` tinyint(1) NOT NULL DEFAULT '1',
   `sched_created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `sched_created_by` int(11) NOT NULL,
   `sched_edited_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `sched_edited_by` int(11) NOT NULL DEFAULT '0',
   `sched_is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`sched_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -328,7 +334,7 @@ CREATE TABLE `tbl_schedules` (
 
 LOCK TABLES `tbl_schedules` WRITE;
 /*!40000 ALTER TABLE `tbl_schedules` DISABLE KEYS */;
-INSERT INTO `tbl_schedules` VALUES (1,2,'2017-07-10 02:32:26','2017-07-09 02:32:26','','','2017-07-09 02:32:34',0,'2017-07-09 02:32:34',0,1),(2,2,'2017-07-12 00:00:00','2017-07-09 08:00:00','','','2017-07-09 02:35:46',0,'2017-07-09 02:35:46',0,1),(3,2,'2017-07-09 00:00:00','2017-07-09 23:00:00','','','2017-07-09 08:45:22',0,'2017-07-09 17:26:47',0,0),(4,2,'2017-07-09 08:45:30','2017-07-09 12:00:00','','','2017-07-09 08:45:45',0,'2017-07-09 08:45:45',0,1),(5,2,'2017-07-09 00:00:00','2017-07-09 17:00:00','','','2017-07-09 11:53:06',0,'2017-07-09 14:09:13',0,1),(6,2,'2017-07-09 11:54:02','2017-07-09 14:00:00','','','2017-07-09 11:54:26',0,'2017-07-09 11:54:26',0,1),(7,2,'2017-07-09 00:00:00','2017-07-09 20:00:00','','','2017-07-09 14:04:06',0,'2017-07-09 14:10:53',0,1),(8,2,'2017-07-09 00:00:00','2017-07-09 18:49:00','','','2017-07-09 14:06:34',0,'2017-07-09 18:47:38',1,1),(9,2,'2017-07-09 00:00:00','2017-07-09 04:00:00','','','2017-07-09 14:07:21',0,'2017-07-09 14:07:21',0,1),(10,2,'2017-07-09 17:23:19','2017-07-09 21:00:00','','','2017-07-09 17:23:36',1,'2017-07-09 17:25:35',0,0),(11,3,'2017-07-10 00:00:00','2017-07-09 01:00:00','','','2017-07-09 18:45:11',1,'2017-07-09 18:45:54',1,1),(12,3,'2017-07-16 17:49:42','2017-07-15 17:49:43','','','2017-07-15 17:49:58',1,'2017-07-15 17:49:58',0,1);
+INSERT INTO `tbl_schedules` VALUES (1,2,'2017-07-10','02:32:26.000000','','',1,'2017-07-09 02:32:34',0,'2017-07-09 02:32:34',0,1),(2,2,'2017-07-12','08:00:00.000000','','',1,'2017-07-09 02:35:46',0,'2017-07-09 02:35:46',0,1),(3,2,'2017-07-09','23:00:00.000000','','',1,'2017-07-09 08:45:22',0,'2017-07-09 17:26:47',0,0),(4,2,'2017-07-09','12:00:00.000000','','',1,'2017-07-09 08:45:45',0,'2017-07-09 08:45:45',0,1),(5,2,'2017-07-09','17:00:00.000000','','',1,'2017-07-09 11:53:06',0,'2017-07-09 14:09:13',0,1),(6,2,'2017-07-09','14:00:00.000000','','',1,'2017-07-09 11:54:26',0,'2017-07-09 11:54:26',0,1),(7,2,'2017-07-09','20:00:00.000000','','',1,'2017-07-09 14:04:06',0,'2017-07-09 14:10:53',0,1),(8,2,'2017-07-09','18:49:00.000000','','',1,'2017-07-09 14:06:34',0,'2017-07-09 18:47:38',1,1),(9,2,'2017-07-09','04:00:00.000000','','',1,'2017-07-09 14:07:21',0,'2017-07-09 14:07:21',0,1),(10,2,'2017-07-09','21:00:00.000000','','',1,'2017-07-09 17:23:36',1,'2017-07-09 17:25:35',0,0),(11,3,'2017-07-10','01:00:00.000000','','',1,'2017-07-09 18:45:11',1,'2017-07-09 18:45:54',1,1),(12,3,'2017-07-16','17:49:43.000000','','',1,'2017-07-15 17:49:58',1,'2017-07-15 17:49:58',0,1),(13,4,'2017-07-18','11:27:43.000000','','',1,'2017-07-17 11:27:55',1,'2017-07-17 11:27:55',0,1),(14,3,'2017-07-18','14:27:56.000000','','',0,'2017-07-17 11:28:18',1,'2017-07-18 09:52:21',1,1),(15,2,'2017-07-18','09:54:00.000000','','',0,'2017-07-18 09:52:56',1,'2017-07-18 09:52:56',0,1),(16,2,'2017-07-29','00:00:00.000000','','',1,'2017-07-29 19:02:18',1,'2017-07-29 19:02:18',0,1),(17,3,'2017-07-30','10:00:00.000000','','',1,'2017-07-29 19:02:43',1,'2017-07-29 19:02:43',0,1),(18,2,'2017-07-31','22:19:09.000000','','',1,'2017-07-31 10:19:20',1,'2017-07-31 10:19:20',0,1),(19,3,'2017-07-31','00:19:21.000000','','',1,'2017-07-31 10:19:36',1,'2017-07-31 10:19:36',0,1),(20,4,'2017-08-01','10:19:36.000000','','',1,'2017-07-31 10:19:46',1,'2017-07-31 10:19:46',0,1),(21,2,'2017-08-02','20:04:25.000000','','',1,'2017-08-01 20:04:43',1,'2017-08-01 20:04:43',0,1),(22,4,'2017-08-02','21:16:52.505205','','',1,'2017-08-01 21:17:02',1,'2017-08-01 21:17:02',0,1),(23,3,'2017-08-02','21:28:41.517126','','',1,'2017-08-01 21:28:56',1,'2017-08-01 21:28:56',0,1),(24,2,'2017-08-03','22:00:00.000000','','',1,'2017-08-02 21:30:50',1,'2017-08-02 21:30:50',0,1),(25,3,'2017-08-03','22:30:00.000000','','',1,'2017-08-02 21:31:38',1,'2017-08-02 21:31:38',0,1),(26,4,'2017-08-03','23:00:00.000000','','',1,'2017-08-02 21:32:02',1,'2017-08-02 21:32:02',0,1);
 /*!40000 ALTER TABLE `tbl_schedules` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,16 +372,17 @@ DROP TABLE IF EXISTS `tbl_transactions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tbl_transactions` (
-  `trans_id` bigint(20) NOT NULL,
+  `trans_id` bigint(20) NOT NULL AUTO_INCREMENT,
   `trans_reservation_id` bigint(20) NOT NULL,
-  `trans_meta_data` text,
+  `trans_total_payment` double NOT NULL DEFAULT '0',
+  `trans_is_paid` tinyint(1) NOT NULL DEFAULT '0',
   `trans_created_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `trans_created_by` int(11) NOT NULL DEFAULT '0',
   `trans_edited_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `trans_edited_by` int(11) NOT NULL,
+  `trans_edited_by` int(11) NOT NULL DEFAULT '0',
   `trans_is_active` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`trans_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -384,6 +391,7 @@ CREATE TABLE `tbl_transactions` (
 
 LOCK TABLES `tbl_transactions` WRITE;
 /*!40000 ALTER TABLE `tbl_transactions` DISABLE KEYS */;
+INSERT INTO `tbl_transactions` VALUES (6,10,750,1,'2017-07-18 10:14:15',0,'2017-07-19 15:55:57',0,1);
 /*!40000 ALTER TABLE `tbl_transactions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,4 +461,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-15 18:21:41
+-- Dump completed on 2017-08-05 15:22:29
